@@ -56,11 +56,9 @@ begin
     begin
         if falling_edge(clk) then
             -- VOk sub-amostrado em 1000 vezes
-            if  VOk_count = VOk_range-1 then
-                VOk_count  := 0;
+            VOk_count := incrementa(VOk_count, VOk_range-1);
+            if  VOk_count = 0 then
                 V_erro_cur := u_diff(V_ref, VOk);
-            else
-                VOk_count := VOk_count + 1;
             end if;
             G_cur       := tf_pi(V_erro_cur, V_A0, V_erro_prev, V_A1, G_prev);
             I_ref       := qmult(G_cur, VINk); -- s13, u12

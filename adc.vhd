@@ -1,6 +1,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
+use work.helpers.all;
 
 entity adc is
     port (
@@ -23,11 +24,7 @@ begin
             else
                 c_ncs <= '0';
             end if;
-            if count = 15 then
-                count := 0;
-            else
-                count := count + 1;
-            end if;
+            count := incrementa(count, 15);
         end if;
         if rising_edge(i_clk) then
             data  <= data(10 downto 0) & c_dat;

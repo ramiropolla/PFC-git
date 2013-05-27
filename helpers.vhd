@@ -9,6 +9,8 @@ package helpers is
     function limit(x: unsigned; n: integer; min: integer; max: integer) return unsigned;
     function limitsx(x: signed; len: integer) return signed;
 
+    function incrementa(x: integer; max: integer) return integer;
+
     -- 1
     function tf_pi(erro_cur: signed; A0: unsigned; erro_prev: signed; A1: unsigned; saida_prev: signed) return signed;
     -- 2
@@ -73,6 +75,14 @@ package body helpers is
             return x;
         end if;
     end function limitsx;
+
+    function incrementa(x: integer; max: integer) return integer is
+    begin
+        if x = max then
+            return 0;
+        end if;
+        return x + 1;
+    end function incrementa;
 
     -- 1
     function tf_pi(erro_cur: signed; A0: unsigned; erro_prev: signed; A1: unsigned; saida_prev: signed) return signed is

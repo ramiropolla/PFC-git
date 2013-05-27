@@ -34,11 +34,7 @@ begin
             diodes   := (others => false);
         elsif rising_edge(clk) then
             for i in 0 to n_saidas-1 loop
-                if contador(i) = resolucao-1 then
-                    contador(i) := 0;
-                else
-                    contador(i) := contador(i) + 1;
-                end if;
+                contador(i) := incrementa(contador(i), resolucao-1);
 
                 if contador(i) < unsigned(input) then
                     switches(i) := true;
