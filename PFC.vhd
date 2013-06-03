@@ -57,7 +57,7 @@ architecture PFC_arch of PFC is
     signal VOk : unsigned(11 downto 0);
     signal VINk: unsigned(11 downto 0);
 
-    component adc
+    component ad7276
         port (
             i_clk: in  std_logic;
             c_ncs: out std_logic;
@@ -136,21 +136,21 @@ begin
     -- ADCs
     adc_clk     <= adc_clk_sig;
     adc_ncs_il0 <= adc_clk_out;
-    adc_il0_inst : adc
+    adc_il0_inst : ad7276
     port map (
         i_clk => adc_clk_sig,
         c_ncs => adc_clk_out,
         c_dat => adc_dat_il0,
         o_dat => ILk
     );
-    adc_uo1_inst : adc
+    adc_uo1_inst : ad7276
     port map (
         i_clk => adc_clk_sig,
         c_ncs => adc_ncs_uo1,
         c_dat => adc_dat_uo1,
         o_dat => VOk
     );
-    adc_un0_inst : adc
+    adc_un0_inst : ad7276
     port map (
         i_clk => adc_clk_sig,
         c_ncs => adc_ncs_un0,

@@ -90,7 +90,7 @@ set_global_assignment -name MISC_FILE "C:/Users/Arnaldo Perin/Documents/Ramiro/P
 set_global_assignment -name SDC_FILE PFC.out.sdc
 set_global_assignment -name VHDL_FILE controle.vhd
 set_global_assignment -name VHDL_FILE pwm.vhd
-set_global_assignment -name VHDL_FILE adc.vhd
+set_global_assignment -name VHDL_FILE ad7276.vhd
 set_global_assignment -name VHDL_FILE helpers.vhd
 set_global_assignment -name VHDL_FILE PFC.vhd
 set_global_assignment -name QIP_FILE pll.qip

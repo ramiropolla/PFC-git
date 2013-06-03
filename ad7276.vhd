@@ -3,16 +3,16 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 use work.helpers.all;
 
-entity adc is
+entity ad7276 is
     port (
         i_clk: in  std_logic;
         c_ncs: out std_logic := '1';
         c_dat: in  std_logic;
         o_dat: out unsigned(11 downto 0) := (others => '0')
     );
-end adc;
+end ad7276;
 
-architecture adc_arch of adc is
+architecture ad7276_arch of ad7276 is
     signal data: unsigned(11 downto 0) := (others => '0');
 begin
     process(i_clk)
@@ -33,4 +33,4 @@ begin
             end if;
         end if;
     end process;
-end adc_arch;
+end ad7276_arch;
