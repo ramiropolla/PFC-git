@@ -84,12 +84,12 @@ architecture PFC_arch of PFC is
             n_saidas : integer
         );
         port (
-            clk   : in  std_logic;
-            enable: in  std_logic;
-            input : in  unsigned(int_length(resolucao)-1 downto 0);
-            S     : out std_logic_vector(n_saidas-1 downto 0);
-            D     : out std_logic_vector(n_saidas-1 downto 0);
-            fs    : out std_logic
+            clk      : in  std_logic;
+            enable   : in  std_logic;
+            input    : in  unsigned(int_length(resolucao)-1 downto 0);
+            S        : out std_logic_vector(n_saidas-1 downto 0);
+            D        : out std_logic_vector(n_saidas-1 downto 0);
+            fs       : out std_logic
         );
     end component;
 
@@ -165,12 +165,12 @@ begin
         n_saidas  => n_saidas
     )
     port map (
-        clk    => clk_pll,
-        enable => pwm_enable,
-        input  => pwm_input,
-        S      => S250_sig,
-        D      => D250_sig,
-        fs     => fs250
+        clk       => clk_pll,
+        enable    => pwm_enable,
+        input     => pwm_input,
+        S         => S250_sig,
+        D         => D250_sig,
+        fs        => fs250
     );
 
 --    pwm500_inst : pwm
@@ -179,12 +179,12 @@ begin
 --        n_saidas  => n_saidas
 --    )
 --    port map (
---        clk    => clk_pll,
---        enable => pwm_enable,
---        input  => pwm_input(int_length(resolucao)-1 downto 1),
---        S      => S500_sig,
---        D      => D500_sig,
---        fs     => fs500
+--        clk       => clk_pll,
+--        enable    => pwm_enable,
+--        input     => pwm_input(int_length(resolucao)-1 downto 1),
+--        S         => S500_sig,
+--        D         => D500_sig,
+--        fs        => fs500
 --    );
 --
 --    pwm1000_inst : pwm
@@ -193,12 +193,12 @@ begin
 --        n_saidas  => n_saidas
 --    )
 --    port map (
---        clk    => clk_pll,
---        enable => pwm_enable,
---        input  => pwm_input(int_length(resolucao)-1 downto 2),
---        S      => S1000_sig,
---        D      => D1000_sig,
---        fs     => fs1000
+--        clk       => clk_pll,
+--        enable    => pwm_enable,
+--        input     => pwm_input(int_length(resolucao)-1 downto 2),
+--        S         => S1000_sig,
+--        D         => D1000_sig,
+--        fs        => fs1000
 --    );
 --
 --    with sw(1 downto 0) select

@@ -9,14 +9,14 @@ entity pwm is
         n_saidas : integer
     );
     port (
-        clk   : in  std_logic;
-        enable: in  std_logic;
+        clk      : in  std_logic;
+        enable   : in  std_logic;
         low_power: in  std_logic;
-        input : in  unsigned(int_length(resolucao)-1 downto 0);
-        S     : out std_logic_vector(n_saidas-1 downto 0);
-        D     : out std_logic_vector(n_saidas-1 downto 0);
+        input    : in  unsigned(int_length(resolucao)-1 downto 0);
+        S        : out std_logic_vector(n_saidas-1 downto 0);
+        D        : out std_logic_vector(n_saidas-1 downto 0);
 --        para ajudar a conferir no osciloscopio
-        fs    : out std_logic
+        fs       : out std_logic
     );
 end pwm;
 
