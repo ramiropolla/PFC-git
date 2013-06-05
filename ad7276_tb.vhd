@@ -24,7 +24,7 @@ architecture ad7276_tb_arch of ad7276_tb is
     );
     end component;
 
-    constant half_step: time := 3125 ps;
+    constant half_step: time := 31250 ps;
     constant mm_exp   : integer := 5;
 
     -- debug

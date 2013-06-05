@@ -37,7 +37,7 @@ architecture instrumentation_tb_arch of instrumentation_tb is
     );
     end component;
 
-    constant half_step: time := 3125 ps;
+    constant half_step: time := 31250 ps;
 
     -- debug
     signal dbg_count: integer range 0 to 15;
