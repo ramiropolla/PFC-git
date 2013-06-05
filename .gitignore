@@ -1,0 +1,10 @@
+*.bak
+*.rpt
+*.done
+*.summary
+*.smsg
+*.pin
+*.qdf
+db/
+incremental_db/
+simulation/
