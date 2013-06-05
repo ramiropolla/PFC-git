@@ -65,9 +65,23 @@ begin
     );
 
     adc_clk     <= i_clk;
-    adc_out_il0 <= ILk;
-    adc_out_uo1 <= VOk;
-    adc_out_un0 <= VINk;
-    o_clk       <= adc_clk_out;
+    process(adc_clk_out)
+        constant max  : integer := 4;
+        variable count: integer range 0 to max-1 := max-1;
+    begin
+        if rising_edge(adc_clk_out) then
+            count := incrementa(count, max-1);
+            if count = 0 then
+                adc_out_il0 <= ILk;
+                adc_out_uo1 <= VOk;
+                adc_out_un0 <= VINk;
+            end if;
+            if count = 0 then
+                o_clk <= '1';
+            else
+                o_clk <= '0';
+            end if;
+        end if;
+    end process;
 
 end instrumentation_arch;
