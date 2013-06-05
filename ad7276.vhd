@@ -13,10 +13,10 @@ entity ad7276 is
 end ad7276;
 
 architecture ad7276_arch of ad7276 is
-    signal data: unsigned(11 downto 0) := (others => '0');
 begin
     process(i_clk)
         variable count: integer range 0 to 15 := 0;
+        variable data : unsigned(11 downto 0) := (others => '0');
     begin
         if falling_edge(i_clk) then
             if count > 12 then
@@ -27,9 +27,9 @@ begin
             count := incrementa(count, 15);
         end if;
         if rising_edge(i_clk) then
-            data  <= data(10 downto 0) & c_dat;
+            data  := data(10 downto 0) & c_dat;
             if count = 13 then
-                o_dat <= data(10 downto 0) & c_dat;
+                o_dat <= data;
             end if;
         end if;
     end process;
