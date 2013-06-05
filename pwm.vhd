@@ -11,6 +11,7 @@ entity pwm is
     port (
         clk   : in  std_logic;
         enable: in  std_logic;
+        low_power: in  std_logic;
         input : in  unsigned(int_length(resolucao)-1 downto 0);
         S     : out std_logic_vector(n_saidas-1 downto 0);
         D     : out std_logic_vector(n_saidas-1 downto 0);
@@ -28,6 +29,7 @@ begin
         type bool_array is array(n_saidas-1 downto 0) of boolean;
         variable switches: bool_array := (others => false);
         variable diodes  : bool_array := (others => true);
+        variable low_power_count: integer range 0 to n_saidas-1 := n_saidas-1;
     begin
         if not enable = '1' then
             switches := (others => false);
@@ -49,6 +51,16 @@ begin
                     diodes(i) := false;
                 end if;
             end loop;
+            -- TODO hard-coded para 2 saidas, generalizar.
+            if low_power = '1' then
+                if contador(0) = 0 then
+                    low_power_count := incrementa(low_power_count, n_saidas-1);
+                end if;
+                switches(  low_power_count) := switches(1);
+                diodes  (  low_power_count) := diodes  (1);
+                switches(1-low_power_count) := false;
+                diodes  (1-low_power_count) := false;
+            end if;
             if contador(0) < resolucao/2 then
                 fs <= '1';
             else
