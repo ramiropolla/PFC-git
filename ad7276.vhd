@@ -19,7 +19,7 @@ begin
         variable data : unsigned(11 downto 0) := (others => '0');
     begin
         if falling_edge(i_clk) then
-            if count > 12 then
+            if count < 3 then
                 c_ncs <= '1';
             else
                 c_ncs <= '0';
@@ -28,7 +28,7 @@ begin
         end if;
         if rising_edge(i_clk) then
             data  := data(10 downto 0) & c_dat;
-            if count = 13 then
+            if count = 0 then
                 o_dat <= data;
             end if;
         end if;
